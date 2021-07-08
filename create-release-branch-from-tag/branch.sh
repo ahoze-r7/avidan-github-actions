@@ -18,10 +18,10 @@ function configureNewBranch()
     #branchSplitName="${BRANCH_NAME}_branch_split"
     branchHotfixName="${BRANCH_NAME}_hotfix"
 
-    echo "Checkout branch: $BRANCH_NAME"
-    git branch $BRANCH_NAME $commitId || error "can't checkout branch: ${BRANCH_NAME}, commit: $commitId"
-    echo "Pushing new branch: $BRANCH_NAME to remote"
-    git push -u origin refs/heads/${BRANCH_NAME}:refs/heads/${BRANCH_NAME} || error "can't push branch: $BRANCH_NAME to remote"
+    #echo "Checkout branch: $BRANCH_NAME"
+    #git branch $BRANCH_NAME $commitId || error "can't checkout branch: ${BRANCH_NAME}, commit: $commitId"
+    #echo "Pushing new branch: $BRANCH_NAME to remote"
+    #git push -u origin refs/heads/${BRANCH_NAME}:refs/heads/${BRANCH_NAME} || error "can't push branch: $BRANCH_NAME to remote"
 
     #echo "Tagging branch split point on master"
     #git tag -a $branchSplitName $commitId -m "tag ${BRANCH_NAME} split point from master with tag: $branchSplitName" || error "failed to create tag: $branchSplitName"
