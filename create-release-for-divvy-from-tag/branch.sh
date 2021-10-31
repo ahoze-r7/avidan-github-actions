@@ -15,9 +15,14 @@ function configureNewBranch()
     echo "Branching from commit id: $commitId"
     echo "##########################"
 
-    branchReleaseName="release/${TAG_NAME}"
+    branchType=${TAG_NAME%%-*}
+    branchSuffix=${TAG_NAME#*-*}
+    echo "branchType: $branchType"
+    echo "branchSuffix: $branchSuffix"
 
-    echo "Checkout branch: $TAG_NAME"
+    branchReleaseName="$branchType/${branchSuffix}"
+
+    echo "Checkout branch: $branchReleaseName"
     git branch $branchReleaseName $commitId || error "can't checkout branch: ${branchReleaseName}, commit: $commitId"
     echo "Pushing new branch: $branchReleaseName to remote"
     git push origin $branchReleaseName || error "can't push branch: $branchReleaseName to remote"
